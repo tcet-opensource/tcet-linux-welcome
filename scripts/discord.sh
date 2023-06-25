@@ -1,2 +1,2 @@
 #!/bin/bash
-firefox https://www.discord.com/
+xdg-open https://www.discord.com/

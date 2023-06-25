@@ -1,2 +1,3 @@
 #!/bin/bash
-pkexec pacman -Syyu
+xfce4-terminal -e "pkexec pacman --noconfirm -Syyu"
+

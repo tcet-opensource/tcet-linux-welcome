@@ -1,2 +1,2 @@
 #!/bin/bash
-firefox https://www.github.com/tcet-opensource/
+xdg-open https://www.github.com/tcet-opensource/
