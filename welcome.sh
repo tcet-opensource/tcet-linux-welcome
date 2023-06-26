@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-yad --title "Welcome To Tcet-Linux" --form --columns=3 --width=740 --height=540 --text="This is test tcet-linux Welcome app trail" --image=$HOME/Desktop/welcome/tcetlinux-logo.png  --center \
+yad --title "Welcome To Tcet-Linux" --form --columns=2 --width=640 --height=300 --text="This is test tcet-linux Welcome app trail" --image=$HOME/Desktop/welcome/tcetlinux-logo.png  --center \
     --scale 2.0\
     --field="<b>Update</b>":fbtn "xfce4-terminal -x ./scripts/update.sh" \
     --field="<b>Github</b>":fbtn "sh ./scripts/github.sh" \
