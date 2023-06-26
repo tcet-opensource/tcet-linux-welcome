@@ -1,6 +1,7 @@
 #!/bin/bash
-reflector --country "India, America, France, germany" \
+reflector --country "India, United States, France, Germany, Norway, Australia, Sweden" \
+  --verbose \
   --sort rate \
-  --protocol https \
-  --latest 5 \
+  --protocol https,http \
+  --latest 10 \
   --save /etc/pacman.d/mirrorlist

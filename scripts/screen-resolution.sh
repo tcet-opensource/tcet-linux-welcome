@@ -1,4 +1,4 @@
-#!/usr/bin/bash 
+#!/bin/env bash
 
 # get no of displays connected
 
