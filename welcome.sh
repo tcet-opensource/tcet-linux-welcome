@@ -5,6 +5,6 @@ yad --title "Welcome To Tcet-Linux" --form --columns=2 --width=640 --height=300 
     --field="<b>Github</b>":fbtn "bash -c  './scripts/github.sh'" \
     --field="<b>Discord</b>":fbtn "bash -c './scripts/discord.sh'" \
     --field="<b>Update Mirror</b>":fbtn "xfce4-terminal -x './scripts/mirror.sh'" \
-    --field="<b>TBD</b>":fbtn "echo 'TO BE DECIDED'" \
+    --field="<b>Arch Wiki</b>":fbtn "bash -c './scripts/archwiki.sh'" \
     --field="<b>Screen Resolution</b>":fbtn "xfce4-terminal -x  './scripts/screen-resolution.sh'" \
     --button=Exit:1
