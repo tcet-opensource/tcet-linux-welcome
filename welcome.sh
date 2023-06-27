@@ -15,5 +15,5 @@ yad --title "Welcome" \
     --field="<b>Update Mirror</b>":fbtn "xfce4-terminal -x './scripts/mirror.sh'" \
     --field="<b>Our Github Profile</b>":fbtn "bash -c  './scripts/github.sh'" \
     --field="<b>Arch AUR</b>":fbtn "bash -c './scripts/aur.sh'" \
-    --field="<b>About US</b>":fbtn "bash -c  './scripts/about.py'" \
+    --field="<b>About US</b>":fbtn "bash -c  './scripts/py-about.sh'" \
     --button=Exit:1
