@@ -1,6 +1,7 @@
 #!/bin/env bash
 
-DIR=/usr/share/tcet-linux-welcome
+DIR=~/.local/share/tcet-linux-welcome
+
 yad --title "Welcome" \
     --form \
     --window-icon=$DIR/assets/tcetlinux-logo.png \
@@ -18,5 +19,6 @@ yad --title "Welcome" \
     --field="<b>Our Github Profile</b>":fbtn "bash -c  '$DIR/scripts/github.sh'" \
     --field="<b>Arch AUR</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
     --field="<b>About US</b>":fbtn "bash -c  '$DIR/scripts/py-about.sh'" \
-    --button=Exit:1
+    --field="<b>Autostart</b>":fbtn " xfce4-terminal -x '$DIR/scripts/autostart.sh'"\
+    --button=Exit:1 \
 
