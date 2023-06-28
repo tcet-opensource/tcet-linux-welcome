@@ -1,0 +1,1 @@
+copy tcet-welcome.desktop to /etc/xdg/autostart
