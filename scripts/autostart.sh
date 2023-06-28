@@ -1,5 +1,9 @@
 #!/bin/env bash
 
+if [[ ! -d $HOME/.config/autostart ]]; then 
+    mkdir "$HOME"/.config/autostart
+fi
+
 if [[ -f $HOME/.config/autostart/tcet-welcome.desktop ]]; then
     echo "Autostart is enabled";
     echo "Do you want to disable it?"
