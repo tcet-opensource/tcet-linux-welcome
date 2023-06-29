@@ -23,7 +23,8 @@ class aboutWin(Gtk.Window):
 
         image1 = Gtk.Image()
         image1.set_from_file("./assets/tcetlinux-logo.png")
-    
+        
+        self.set_icon_from_file("assets/tcetlinux-logo.png")
         label1 = Gtk.Label(label="TCET Linux is GNU/Linux distribution, based on Arch Linux built for enhancing college infrastructure and promoting Linux in software engineering education. The primary goal of TCET Open Source is to provide other users with access to project documentation for all of their college projects.")
         label1.set_line_wrap(True)
         label1.set_justify(Gtk.Justification.CENTER)
