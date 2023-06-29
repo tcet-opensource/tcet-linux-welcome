@@ -1,16 +1,18 @@
 #!/bin/env bash
 
-if [[ ! -d $HOME/.config/autostart ]]; then 
-    mkdir "$HOME"/.config/autostart
+AUTO_DIR=/etc/xdg/autostart
+
+if [[ ! -d $AUTO_DIR ]]; then 
+    sudo mkdir $AUTO_DIR
 fi
 
-if [[ -f $HOME/.config/autostart/tcet-welcome.desktop ]]; then
+if [[ -f $AUTO_DIR/tcet-welcome.desktop ]]; then
     echo "Autostart is enabled";
     echo "Do you want to disable it?"
     bool='';
     read -rp "Press y/Y if you want to disable autostart - " bool;
     if [[ $bool == y || $bool == Y ]]; then
-        rm "$HOME"/.config/autostart/tcet-welcome.desktop;
+        sudo rm $AUTO_DIR/tcet-welcome.desktop;
         echo "Autostart is disabled now"
     else
         echo "Autostart is still enabled"
@@ -21,7 +23,7 @@ else
     bool='';
     read -rp "Press y/Y if you want to enable autostart - " bool;
     if [[ $bool == y || $bool == Y ]]; then
-        cp ~/.local/share/tcet-linux-welcome/tcet-welcome.desktop "$HOME"/.config/autostart/;
+        sudo cp ~/.local/share/tcet-linux-welcome/tcet-welcome.desktop $AUTO_DIR;
         echo "Autostart is enabled now"
     else
         echo "Autostart is still disabled"
