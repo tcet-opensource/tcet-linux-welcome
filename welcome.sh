@@ -9,7 +9,7 @@ yad --title "Welcome" \
     --rows=5 \
     --width=640 \
     --height=380 \
-    --image=assets/Tcet_Linux.png \
+    --image=$DIR/assets/Tcet_Linux.png \
     --field="<b>Update this PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
     --field="<b>Fix Screen Resolution</b>":fbtn "xfce4-terminal -x  '$DIR/scripts/screen-resolution.sh'" \
     --field="<b>Arch AUR</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
