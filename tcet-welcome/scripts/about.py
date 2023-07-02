@@ -31,7 +31,7 @@ class aboutWin(Gtk.Window):
                          column_homogeneous = False)
  
         image1 = Gtk.Image()
-        image1.set_from_file(f"{installDir}/assets/tcetlinux-logo.png")
+        image1.set_from_file(f"{installDir}/assets/About_Us.png")
  
         self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
         label1 = Gtk.Label(label="TCET - Linux" 
