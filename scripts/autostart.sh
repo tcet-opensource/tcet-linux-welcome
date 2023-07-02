@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-AUTO_DIR=/etc/xdg/autostart
+AUTO_DIR=~/.config/autostart
 
 if [[ ! -d $AUTO_DIR ]]; then 
     sudo mkdir $AUTO_DIR
