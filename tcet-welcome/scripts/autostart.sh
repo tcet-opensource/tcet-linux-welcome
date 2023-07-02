@@ -23,7 +23,7 @@ else
     bool='';
     read -rp "Press y/Y if you want to enable autostart - " bool;
     if [[ $bool == y || $bool == Y ]]; then
-        sudo cp ~/.local/share/tcet-welcome/tcet-welcome.desktop $AUTO_DIR;
+        sudo cp /usr/share/applications/tcet-welcome.desktop $AUTO_DIR;
         echo "Autostart is enabled now"
     else
         echo "Autostart is still disabled"
