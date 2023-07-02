@@ -2,7 +2,7 @@
 
 yad --title="About Us" \
     --window-icon=~/.local/share/tcet-welcome/assets/tcetlinux-logo.png \
-    --image=~/.local/share/tcet-welcome/assets/tcetlinux-logo.png \
+    --image=~/.local/share/tcet-welcome/assets/About_Us.png \
     --width=600 \
     --height=250 \
     --justify=center \
