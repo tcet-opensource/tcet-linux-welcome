@@ -4,5 +4,5 @@ Version=1.0
 Type=Application
 Terminal=false
 Exec=bash -c ~/.local/share/tcet-welcome/welcome
-Name=TCET Welcome
+Name=Welcome
 Icon=/usr/share/pixmaps/tcetlinux-logo.png
