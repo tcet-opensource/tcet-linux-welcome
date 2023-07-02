@@ -34,5 +34,5 @@ Or just run the app and click on `Autostart` button
 
 ![tcet-wl](https://github.com/tcet-opensource/tcet-linux-welcome/assets/53911515/224d4a3f-d130-4b34-8023-ea0d5e3ee456)
 
-![tcet-about-us](https://github.com/tcet-opensource/tcet-linux-welcome/assets/53911515/f4400501-9fac-4759-a4bb-c2908b178d4c)
+![about-us](https://github.com/tcet-opensource/tcet-linux-welcome/assets/53911515/d2401b6a-e4fe-4055-a048-f4071b81e0c4)
 
