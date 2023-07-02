@@ -3,6 +3,6 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=bash -c ~/.local/share/tcet-linux-welcome/welcome.sh
+Exec=bash -c ~/.local/share/tcet-welcome/welcome.sh
 Name=TCET Welcome
 Icon=/usr/share/pixmaps/tcetlinux-logo.png
