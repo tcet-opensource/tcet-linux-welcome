@@ -64,6 +64,7 @@ class aboutWin(Gtk.Window):
         grid2.attach(label1,   0, 2, 4, 2)
  
         self.add(frame2)
+        label1.set_margin_top(5)
         frame2.add(grid2)
  
 win5 = aboutWin()
