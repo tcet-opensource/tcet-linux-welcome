@@ -12,7 +12,7 @@ if [[ -f $AUTO_DIR/tcet-welcome.desktop ]]; then
     bool='';
     read -rp "Press y/Y if you want to disable autostart - " bool;
     if [[ $bool == y || $bool == Y ]]; then
-        rm $AUTO_DIR/tcet-welcome.desktop;
+        sudo rm $AUTO_DIR/tcet-welcome.desktop;
         echo "Autostart is disabled now"
     else
         echo "Autostart is still enabled"
