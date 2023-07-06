@@ -12,7 +12,7 @@ yad --title "Welcome" \
     --no-escape \
     --image=$DIR/assets/Tcet_Linux.png \
     --field="<b>Update this PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
-    --field="<b>Update this PC</b>":fbtn "bash -c 'sudo -E calamares -D 8'" \
+    --field="<b>Install TCET Linux</b>":fbtn "bash -c 'sudo -E calamares -D 8'" \
     --field="<b>Fix Screen Resolution</b>":fbtn "xfce4-terminal -x  '$DIR/scripts/screen-resolution.sh'" \
     --field="<b>Arch AUR</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
     --field="<b>Our Discord</b>":fbtn "bash -c '$DIR/scripts/discord.sh'" \
