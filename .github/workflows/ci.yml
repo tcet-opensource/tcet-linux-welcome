@@ -22,7 +22,8 @@ jobs:
         shell: bash
 
       - name: Display incremented value
-        run: echo "Incremented Number: $INCREMENT_NUMBER"
+        run: |
+          echo "Incremented Number: $INCREMENT_NUMBER"
 
   pkgbuild-update:
       runs-on: ubuntu-latest
