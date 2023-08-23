@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  increment_number:
+    runs-on: ubuntu-latest
+
+    env:
+      INCREMENT_NUMBER: 1
+    steps:
+      - name: Get current value
+        id: get_value
+        run: echo "VALUE=$INCREMENT_NUMBER" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Increment value
+        id: increment
+        run: echo "INCREMENT_NUMBER=$((VALUE+1))" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Display incremented value
+        run: |
+          echo "Incremented Number: $INCREMENT_NUMBER"
+
+  pkgbuild-update:
+    runs-on: ubuntu-latest
+
+    env:
+      rel: 4
+    steps:
+      - uses: actions/checkout@v3
+      - name: Installing Dependecies
+        run: |
+          sudo apt update
+          sudo apt install git
+      - name: Updating pkgrel
+        run: |
+          chmod +x test.sh
+          ./test.sh
+
+  build:
+    runs-on: ubuntu-latest
+    needs: pkgbuild-update
+    steps:
+      - name: Installing Dependecies
+        run: |
+          sudo apt update
+          sudo apt install curl git
+      - name: Downloading PKGBUILD
+        run: curl https://raw.githubusercontent.com/tcet-opensource/tcet-linux-pkgbuild/main/apps/tcet-linux-welcome/PKGBUILD -o PKGBUILD
+      - name: Build
+        uses: edlanglois/pkgbuild-action@v1
+        id: makepkg
+      - run: ls -al
+      - name: Cloning Application
+        run: git clone https://github.com/harshau007/tcet-linux-applications.git
