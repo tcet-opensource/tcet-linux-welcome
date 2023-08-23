@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+    pkgbuild-update:
+      runs-on: ubuntu-latest
+
+      env:
+        rel: 4
+      steps:
+          - uses: actions/checkout@v3
+          - name: Installing Dependecies
+            run: |
+              sudo apt update
+              sudo apt install git
+          - name: Updating pkgrel
+            run: |
+              chmod +x test.sh
+              ./test.sh
+
+    build:
+        runs-on: ubuntu-latest
+        needs: pkgbuild-update
+        steps:
+            - name: Installing Dependecies
+              run: |
+                sudo apt update
+                sudo apt install curl git
+            - name: Downloading PKGBUILD
+              run: curl https://raw.githubusercontent.com/tcet-opensource/tcet-linux-pkgbuild/main/apps/tcet-linux-welcome/PKGBUILD -o PKGBUILD
+            - name: Build
+              uses: edlanglois/pkgbuild-action@v1
+              id: makepkg
+            - run: ls -al
+            - name: Cloning Application
+              run: git clone https://github.com/harshau007/tcet-linux-applications.git
