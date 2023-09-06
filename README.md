@@ -2,7 +2,7 @@
 
 Tcet-linux-welcome is a simple welcome app specifically written for [TCET Linux](https://github.com/tcet-opensource/tcet-linux) but it can be used on Arch Linux and any Arch-based distributions.
 
-The welcome app aims to provide a way to do simple tasks easily like - 
+The welcome app aims to provide a easy way to do simple tasks like - 
 
 - Fixing screen resolutions for Vms 
 - Updating the packages and mirrors
