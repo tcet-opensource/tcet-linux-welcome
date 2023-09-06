@@ -10,6 +10,26 @@ The welcome app aims to provide a way to do simple tasks easily like -
 
 The app is written using [YAD](https://github.com/v1cont/yad) and GTK-3.0.
 
+## Installation
+
+**For Tcet-Linux**:
+
+You don't need to install the app as it is installed by default. <br>
+But if for reason its not installed, you can install it using the following command:
+
+```sh
+sudo pacman -Sy tcet-linux-welcome
+```
+---
+
+**For other Arch-based distributions**:
+
+You can go to [tcet-linux-repo](https://github.com/tcet-opensource/tcet-linux-repo) and download the *.zst* file from there and install it using the following command:
+
+```sh
+sudo pacman -U <name of the zst file>
+```
+
 ## Preview
 
 |Main Page             |  About us        |
