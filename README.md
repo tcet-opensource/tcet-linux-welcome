@@ -36,7 +36,3 @@ sudo pacman -U <name of the zst file>
 |:-------------------------:|:-------------------------:|
 | ![welcome](https://github.com/tcet-opensource/tcet-linux-welcome/assets/53911515/11aabf1b-a8f2-46b4-b18e-3ba81a4f60e9) |  ![about-us](https://github.com/tcet-opensource/tcet-linux-welcome/assets/53911515/1ea631dd-b7fa-4b22-99ff-fb10f6f1e7fb)|
 
-
-## Credits
-
-Our sincere credits to 
