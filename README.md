@@ -1,4 +1,4 @@
-# TCET linux welcome
+# TCET Linux Welcome
 
 TCET Linux Welcome is a simple welcome app specifically written for [TCET Linux](https://github.com/tcet-opensource/tcet-linux) but it can be used on Arch Linux and any Arch-based distributions.
 
