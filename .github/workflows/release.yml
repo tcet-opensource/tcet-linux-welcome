@@ -22,7 +22,7 @@ jobs:
           ls -la
           cd ..
           ls -la
-          tar -czf tcet-linux-welcome.tar.gz --exclude=tcet-linux-welcome.tar.gz .
+          tar -czf tcet-linux-welcome.tar.gz tcet-linux-welcome/
           touch checksum
           sha256sum tcet-linux-welcome.tar.gz > checksum
           mv checksum tcet-linux-welcome/
