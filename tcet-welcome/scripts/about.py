@@ -73,4 +73,3 @@ win5.connect("destroy", Gtk.main_quit)
  
 win5.show_all()
 Gtk.main()
- 
