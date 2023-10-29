@@ -52,7 +52,7 @@ class MyApp(Gtk.Window):
     grid.attach(button, 2, 2, 1, 1)
     button.connect("clicked", self.on_install_clicked)
 
-  def on_install_clicked(self):
+  def on_install_clicked(self, widget):
 
     to_install = []
     for displayed_name, checkbox in self.checkboxes.items():
@@ -63,6 +63,7 @@ class MyApp(Gtk.Window):
     for package in to_install:
       print(f"Installing {package}")
       subprocess.run(["pkexec","yay", "-S", package, "--noconfirm"])
+    Gtk.main_quit()
 
 win = MyApp() 
 win.connect("destroy", Gtk.main_quit)
