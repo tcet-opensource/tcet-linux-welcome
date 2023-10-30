@@ -2,18 +2,18 @@
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gio 
+from gi.repository import Gtk
 import subprocess
 
 package_map = {
   "NodeJS": "nodejs",
   "Google Chrome": "google-chrome",
-  "VS Code": "visual-studio-code-bin" ,
+  "VS Code": "visual-studio-code-bin",
   "Java": "jdk17-openjdk",
   "Libre Office": "libreoffice-still",
   "PyCharm (CE)":"pycharm-community-edition",
   "GitHub CLI":"github-cli",
-  "Neovim":"neovim",
+  "Neovim":"neovim-git",
   "Intellij Idea (CE)":"intellij-idea-community-edition",
   "GoLang":"go"
 }
@@ -23,7 +23,7 @@ class MyApp(Gtk.Window):
   def __init__(self):
     Gtk.Window.__init__(self, title="Application Installer")
     self.set_border_width(10)
-    self.set_default_size(500, 250)
+    self.set_default_size(500, 200)
 
     grid = Gtk.Grid()
     grid.set_column_spacing(10)
@@ -52,35 +52,24 @@ class MyApp(Gtk.Window):
     grid.attach(button, 2, 2, 1, 1)
     button.connect("clicked", self.on_install_clicked)
 
-  def on_install_clicked(self, widget):
+  def error_msg(self, package):
+    dialog = Gtk.MessageDialog(transient_for=self,flags=0, message_type=Gtk.MessageType.ERROR,buttons=Gtk.ButtonsType.OK,text="Error installing "+package)
+    dialog.format_secondary_text("Package "+package+" is not available. Please update the mirrorlist and try again.")
+    dialog.run()
+    dialog.destroy()
 
-    to_install = []
-    for displayed_name, checkbox in self.checkboxes.items():
-      if checkbox.get_active():
-        package_name = package_map[displayed_name]
-        to_install.append(package_name)
+  def on_install_clicked(self, widget):
+    to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
 
     for package in to_install:
-      print(f"Installing {package}")
-      subprocess.run(["pkexec","yay", "-S", package, "--noconfirm"])
-      if subprocess.SubprocessError:
-        dialog = Gtk.MessageDialog(
-            transient_for=self,
-            flags=0,
-            message_type=Gtk.MessageType.ERROR,
-            buttons=Gtk.ButtonsType.CANCEL,
-            text="There was an ERROR while installing" + package,
-        )
-        dialog.format_secondary_text(
-            "Please update mirrorlist and try again"
-        )
-        dialog.run()
-        print("ERROR dialog closed")
-        dialog.destroy()
+        subprocess.run(["pkexec", "yay", "-S", package, "--noconfirm"])
+        try:
+          subprocess.check_output(["pacman", "-Q", package]).decode().split("\n")
+        except subprocess.CalledProcessError:
+          self.error_msg(package)
 
     Gtk.main_quit()
-
-win = MyApp() 
-win.connect("destroy", Gtk.main_quit)
+win = MyApp()
+win.connect("destroy", Gtk.main_quit) 
 win.show_all()
 Gtk.main()
