@@ -63,6 +63,21 @@ class MyApp(Gtk.Window):
     for package in to_install:
       print(f"Installing {package}")
       subprocess.run(["pkexec","yay", "-S", package, "--noconfirm"])
+      if subprocess.SubprocessError:
+        dialog = Gtk.MessageDialog(
+            transient_for=self,
+            flags=0,
+            message_type=Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.CANCEL,
+            text="There was an ERROR while installing" + package,
+        )
+        dialog.format_secondary_text(
+            "Please update mirrorlist and try again"
+        )
+        dialog.run()
+        print("ERROR dialog closed")
+        dialog.destroy()
+
     Gtk.main_quit()
 
 win = MyApp() 
