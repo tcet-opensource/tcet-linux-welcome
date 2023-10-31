@@ -70,7 +70,7 @@ class MyApp(Gtk.Window):
     to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
     error = False
     for package in to_install:
-        subprocess.run(["true"])
+        subprocess.run(["pkexec", "yay", "-S", package, "--noconfirm"])
         try:
           subprocess.check_output(["pacman", "-Q", package]).decode().split("\n")
         except subprocess.CalledProcessError:
