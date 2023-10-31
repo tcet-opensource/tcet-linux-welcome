@@ -57,18 +57,29 @@ class MyApp(Gtk.Window):
     dialog.format_secondary_text("Package "+package+" is not available. Please update the mirrorlist and try again.")
     dialog.run()
     dialog.destroy()
+    Gtk.main_quit()
+
+  def success_msg(self):
+    dialog = Gtk.MessageDialog(transient_for=self,flags=0, message_type=Gtk.MessageType.ERROR,buttons=Gtk.ButtonsType.OK,text="Packages Installed ")
+    dialog.format_secondary_text("Packages are installed successfully.")
+    dialog.run()
+    dialog.destroy()
+    Gtk.main_quit()
 
   def on_install_clicked(self, widget):
     to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
-
+    error = False
     for package in to_install:
-        subprocess.run(["pkexec", "yay", "-S", package, "--noconfirm"])
+        subprocess.run(["true"])
         try:
           subprocess.check_output(["pacman", "-Q", package]).decode().split("\n")
         except subprocess.CalledProcessError:
           self.error_msg(package)
+          error = True
 
-    Gtk.main_quit()
+    if not error:
+      self.success_msg()
+    
 win = MyApp()
 win.connect("destroy", Gtk.main_quit) 
 win.show_all()
