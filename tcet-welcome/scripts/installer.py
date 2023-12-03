@@ -21,7 +21,7 @@ package_map = {
 class MyApp(Gtk.Window):
 
   def __init__(self):
-    Gtk.Window.__init__(self, title="Application Installer")
+    Gtk.Window.__init__(self, title="Application Installer (BETA)")
     self.set_border_width(10)
     self.set_default_size(500, 200)
 
