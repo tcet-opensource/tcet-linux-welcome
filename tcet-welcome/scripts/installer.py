@@ -4,6 +4,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import subprocess
+from os import environ
 
 package_map = {
   "NodeJS": "nodejs",
@@ -18,8 +19,9 @@ package_map = {
   "GoLang":"go"
 }
 
-class MyApp(Gtk.Window):
+installDir = environ['HOME']+'/.local/share/tcet-welcome'
 
+class MyApp(Gtk.Window):
   def __init__(self):
     Gtk.Window.__init__(self, title="Application Installer (BETA)")
     self.set_border_width(10)
@@ -29,6 +31,8 @@ class MyApp(Gtk.Window):
     grid.set_column_spacing(10)
     grid.set_row_spacing(10)
     self.add(grid)
+    
+    self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
 
     self.checkboxes = {}
 
