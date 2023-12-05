@@ -11,13 +11,14 @@ yad --title "Welcome" \
     --height=380 \
     --no-escape \
     --image=$DIR/assets/Tcet_Linux.png \
+    --field="<b>Update PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
     --field="<b>Fix Screen Resolution (VM)</b>":fbtn "bash -c 'xfce4-display-settings'" \
-    --field="<b>Arch User Repository</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
+    --field="<b>Arch User Repository (AUR)</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
     --field="<b>Join our discord Server</b>":fbtn "bash -c '$DIR/scripts/discord.sh'" \
+    --field="<b>Toggle Autostart</b>":fbtn " xfce4-terminal -x '$DIR/scripts/autostart.sh'"\
     --field="<b>Update Mirrors</b>":fbtn "xfce4-terminal -x '$DIR/scripts/mirror.sh'" \
-    --field="<b>Update this PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
+    --field="<b>Application Installer (BETA)</b>":fbtn "bash -c  '$DIR/scripts/py-installer.sh'" \
     --field="<b>Arch Wiki</b>":fbtn "bash -c '$DIR/scripts/archwiki.sh'" \
     --field="<b>Contribute to TCET Linux</b>":fbtn "bash -c  '$DIR/scripts/github.sh'" \
-    --field="<b>Toggle autostart in this app</b>":fbtn " xfce4-terminal -x '$DIR/scripts/autostart.sh'"\
     --field="<b>About US</b>":fbtn "bash -c  '$DIR/scripts/py-about.sh'" \
     --button=Exit:1 \
