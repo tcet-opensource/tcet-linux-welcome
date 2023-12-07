@@ -12,7 +12,7 @@ yad --title "Welcome" \
     --no-escape \
     --image=$DIR/assets/Tcet_Linux.png \
     --field="<b>Update PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
-    --field="<b>Fix Screen Resolution (VM)</b>":fbtn "bash -c 'xfce4-display-settings'" \
+    --field="<b>Fix Screen Resolution</b>":fbtn "bash -c 'xfce4-display-settings'" \
     --field="<b>Arch User Repository (AUR)</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
     --field="<b>Join our discord Server</b>":fbtn "bash -c '$DIR/scripts/discord.sh'" \
     --field="<b>Toggle Autostart</b>":fbtn " xfce4-terminal -x '$DIR/scripts/autostart.sh'"\
