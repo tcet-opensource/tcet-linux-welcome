@@ -27,12 +27,12 @@ jobs:
       - name: Building TCET Linux Welcome Tar file
         run: |
           cd ..
-          touch tcet-linux-wallpaper.tar.gz
-          tar -czf tcet-linux-wallpaper.tar.gz tcet-linux-wallpaper/
+          touch tcet-linux-welcome.tar.gz
+          tar -czf tcet-linux-welcome.tar.gz tcet-linux-welcome/
           touch checksum
-          sha256sum tcet-linux-wallpaper.tar.gz > checksum
-          mv checksum tcet-linux-wallpaper/
-          mv tcet-linux-wallpaper.tar.gz tcet-linux-wallpaper/
+          sha256sum tcet-linux-welcome.tar.gz > checksum
+          mv checksum tcet-linux-welcome/
+          mv tcet-linux-welcome.tar.gz tcet-linux-welcome/
           
       - name: Checking if release with date tag exist
         run: |
@@ -63,7 +63,7 @@ jobs:
           gh release delete latest
       - name: Release Tar File
         run: |
-          gh release create ${{ env.DATE }} *tar.gz checksum --title "TCET-Linux Wallpaper"
+          gh release create ${{ env.DATE }} *tar.gz checksum --title "TCET-Linux welcome"
       - name: Release Tar File with latest
         run: |
-          gh release create latest *tar.gz checksum --latest --title "TCET-Linux Wallpaper"
+          gh release create latest *tar.gz checksum --latest --title "TCET-Linux welcome"
