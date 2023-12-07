@@ -4,7 +4,6 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import subprocess
-from os import environ
 
 package_map = {
   "NodeJS": "nodejs",
@@ -19,7 +18,7 @@ package_map = {
   "GoLang":"go"
 }
 
-installDir = environ['HOME']+'/.local/share/tcet-welcome'
+installDir = '/usr/local/share/tcet-welcome'
 
 class MyApp(Gtk.Window):
   def __init__(self):

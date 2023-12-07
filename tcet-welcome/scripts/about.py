@@ -3,15 +3,14 @@
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from os import environ
 
 # get install dir relative to $home
-# we have to do this because when we start the program from terminal its executed in the ~/.local/share/tcet-welcome
+# we have to do this because when we start the program from terminal its executed in the /usr/local/share/tcet-welcome
 # when we auto start welcome.sh from the .desktop in ~/.config/autostart it is executed in the $HOME dir and our relative paths are broken
-# so using the $HOME env variable get the path GTK more specifically set_from_file() / set_icon_from_file wont let you user ~/.local/share/tcet-welcome
+# so using the $HOME env variable get the path GTK more specifically set_from_file() / set_icon_from_file wont let you user /usr/local/share/tcet-welcome
 
  
-installDir = environ['HOME']+'/.local/share/tcet-welcome'
+installDir = '/usr/local/share/tcet-welcome'
  
 class aboutWin(Gtk.Window):
  

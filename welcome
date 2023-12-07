@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-DIR=~/.local/share/tcet-welcome
+DIR=/usr/local/share/tcet-welcome
 
 yad --title "Welcome" \
     --form \
