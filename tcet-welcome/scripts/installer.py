@@ -13,7 +13,7 @@ package_map = {
   "Libre Office": "libreoffice-still",
   "PyCharm (CE)":"pycharm-community-edition",
   "GitHub CLI":"github-cli",
-  "Neovim":"neovim-git",
+  "Neovim":"neovim",
   "Intellij Idea (CE)":"intellij-idea-community-edition",
   "GoLang":"go"
 }
