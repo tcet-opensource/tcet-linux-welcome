@@ -70,6 +70,10 @@ class MyApp(Gtk.Window):
     dialog.destroy()
     Gtk.main_quit()
 
+  def clear_checkboxes(self):
+    for checkbox in self.checkboxes.values():
+      checkbox.set_active(False)
+
   def on_install_clicked(self, widget):
     to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
     # error = False
@@ -91,6 +95,8 @@ class MyApp(Gtk.Window):
       case _:
         # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
         print("Cant Recognize DE")
+
+    self.clear_checkboxes()
     # if not error:
     #   self.success_msg()
 
