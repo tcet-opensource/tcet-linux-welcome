@@ -85,9 +85,9 @@ class MyApp(Gtk.Window):
     result = os.popen('echo $XDG_CURRENT_DESKTOP').read().strip()
     match result:
       case "GNOME":
-        subprocess.run(["kgx", "-e", "pkexec", installCMD])
+        subprocess.run(["kgx", "-e", installCMD])
       case "XFCE":
-        subprocess.run(["xfce4-terminal", "-e", "pkexec", installCMD])
+        subprocess.run(["xfce4-terminal", "-e", installCMD])
       case _:
         # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
         print("Cant Recognise DE")
