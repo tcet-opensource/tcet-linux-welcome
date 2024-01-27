@@ -32,7 +32,7 @@ class MyApp(Gtk.Window):
     grid.set_row_spacing(10)
     self.add(grid)
 
-    # self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
+    self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
 
     self.checkboxes = {}
 
@@ -90,7 +90,7 @@ class MyApp(Gtk.Window):
         subprocess.run(["xfce4-terminal", "-e", installCMD])
       case _:
         # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
-        print("Cant Recognise DE")
+        print("Cant Recognize DE")
     # if not error:
     #   self.success_msg()
 
