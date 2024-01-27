@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -30,8 +31,8 @@ class MyApp(Gtk.Window):
     grid.set_column_spacing(10)
     grid.set_row_spacing(10)
     self.add(grid)
-    
-    self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
+
+    # self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
 
     self.checkboxes = {}
 
@@ -71,19 +72,29 @@ class MyApp(Gtk.Window):
 
   def on_install_clicked(self, widget):
     to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
-    error = False
+    # error = False
+    installCMD = "yay -S --noconfirm"
     for package in to_install:
-        subprocess.run(["pkexec", "yay", "-S", package, "--noconfirm"])
-        try:
-          subprocess.check_output(["pacman", "-Q", package]).decode().split("\n")
-        except subprocess.CalledProcessError:
-          self.error_msg(package)
-          error = True
+      installCMD = installCMD + " " + package
+        # subprocess.run(["pkexec", "yay", "-S", package, "--noconfirm"])
+        # try:
+        #   subprocess.check_output(["pacman", "-Q", package]).decode().split("\n")
+        # except subprocess.CalledProcessError:
+        #   self.error_msg(package)
+        #   error = True
+    result = os.popen('echo $XDG_CURRENT_DESKTOP').read().strip()
+    match result:
+      case "GNOME":
+        subprocess.run(["kgx", "-e", "pkexec", installCMD])
+      case "XFCE":
+        subprocess.run(["xfce4-terminal", "-e", "pkexec", installCMD])
+      case _:
+        # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
+        print("Cant Recognise DE")
+    # if not error:
+    #   self.success_msg()
 
-    if not error:
-      self.success_msg()
-    
 win = MyApp()
-win.connect("destroy", Gtk.main_quit) 
+win.connect("destroy", Gtk.main_quit)
 win.show_all()
 Gtk.main()
