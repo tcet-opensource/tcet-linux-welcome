@@ -16,6 +16,7 @@ yad --title "Welcome" \
     --rows=5 \
     --width=640 \
     --height=380 \
+    --fixed \
     --no-escape \
     --image=$DIR/assets/Tcet_Linux.png \
     --field="<b>Update PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
