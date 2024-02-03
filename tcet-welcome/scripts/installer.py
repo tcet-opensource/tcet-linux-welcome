@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import multiprocessing
 import os
 import gi
 gi.require_version('Gtk', '3.0')
@@ -72,12 +73,16 @@ class MyApp(Gtk.Window):
     match result:
       case "GNOME":
         p = subprocess.Popen(["kgx", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
-        time.sleep(25)
-        os.killpg(p.pid, signal.SIGINT)
+        process = multiprocessing.Process(target = p)
+        if not process.is_alive:
+          #time.sleep(25)
+          os.killpg(p.pid, signal.SIGINT)
       case "XFCE":
         p = subprocess.Popen(["xfce4-terminal", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
-        time.sleep(25)
-        os.killpg(p.pid, signal.SIGINT)
+        process = multiprocessing.Process(target = p)
+        if not process.is_alive:
+          #time.sleep(25)
+          os.killpg(p.pid, signal.SIGINT)
       case _:
         # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
         print("Cant Recognize DE")
