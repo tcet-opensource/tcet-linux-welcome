@@ -9,7 +9,7 @@ import subprocess
 import signal
 
 package_map = {
-  "NodeJS": "nodejs",
+  "Docker": "docker",
   "Google Chrome": "google-chrome",
   "VS Code": "visual-studio-code-bin",
   "PyCharm (CE)":"pycharm-community-edition",
