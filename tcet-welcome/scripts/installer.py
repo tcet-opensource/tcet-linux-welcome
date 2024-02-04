@@ -84,7 +84,7 @@ class MyApp(Gtk.Window):
         if not process.is_alive:
           os.killpg(p.pid, signal.SIGINT)
       case "XFCE":
-        p = subprocess.Popen(["xfce4-terminal", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
+        p = subprocess.Popen(["xfce4-terminal", "-e", installCMD], preexec_fn=os.setpgrp)
         process = multiprocessing.Process(target = p)
         if not process.is_alive:
           os.killpg(p.pid, signal.SIGINT)
