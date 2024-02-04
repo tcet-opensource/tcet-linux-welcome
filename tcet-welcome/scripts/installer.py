@@ -4,18 +4,17 @@ import multiprocessing
 import os
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 import subprocess
-import time
 import signal
 
 package_map = {
   "NodeJS": "nodejs",
   "Google Chrome": "google-chrome",
   "VS Code": "visual-studio-code-bin",
-  "Java": "jdk17-openjdk",
-  "Libre Office": "libreoffice-still",
   "PyCharm (CE)":"pycharm-community-edition",
+  "Libre Office": "libreoffice-still",
+  "Java": "jdk17-openjdk",
   "GitHub CLI":"github-cli",
   "Neovim":"neovim",
   "Intellij Idea (CE)":"intellij-idea-community-edition",
@@ -28,36 +27,44 @@ class MyApp(Gtk.Window):
   def __init__(self):
     Gtk.Window.__init__(self, title="Application Installer (BETA)")
     self.set_border_width(10)
-    self.set_default_size(500, 200)
+    self.set_default_size(400, 200)
     self.set_resizable(False)
 
     grid = Gtk.Grid()
-    grid.set_column_spacing(10)
-    grid.set_row_spacing(10)
+    grid.set_column_spacing(15)
+    grid.set_row_spacing(15)
     self.add(grid)
 
-    # self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
+    self.set_icon_from_file(f"{installDir}/assets/tcetlinux-logo.png")
 
     self.checkboxes = {}
 
-    col = 0
-    row = 0
+    self.col = 0
+    self.row = 0
     for i, displayed_name in enumerate(package_map):
+      icon_path = f"{installDir}/assets/{displayed_name.lower().replace(' ', '_')}_icon.png"
+      pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(icon_path, 48, 48, True)
+
+      vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+      image = Gtk.Image.new_from_pixbuf(pixbuf)
+      vbox.pack_start(image, False, False, 0)
+
       checkbox = Gtk.CheckButton(label=displayed_name)
       self.checkboxes[displayed_name] = checkbox
-      if i % 5 == 0 and i > 0:
-        col = 0
-        row += 1
+      vbox.pack_start(checkbox, False, False, 0)
 
-      grid.attach(checkbox, col, row, 1, 1)
-      col += 1
+      grid.attach(vbox, self.col, self.row, 1, 1)
+      self.col += 1
+      if self.col == 5:
+          self.col = 0
+          self.row += 1
 
 
     button = Gtk.Button(label="Install")
-    button.set_property("height-request", 0)
     grid.set_column_homogeneous(True)
     grid.set_row_homogeneous(True)
-    grid.attach(button, 2, 2, 1, 1)
+    grid.attach(button, 2, self.row+1, 1, 1)
     button.connect("clicked", self.on_install_clicked)
 
   def clear_checkboxes(self):
@@ -75,13 +82,11 @@ class MyApp(Gtk.Window):
         p = subprocess.Popen(["kgx", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
         process = multiprocessing.Process(target = p)
         if not process.is_alive:
-          #time.sleep(25)
           os.killpg(p.pid, signal.SIGINT)
       case "XFCE":
         p = subprocess.Popen(["xfce4-terminal", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
         process = multiprocessing.Process(target = p)
         if not process.is_alive:
-          #time.sleep(25)
           os.killpg(p.pid, signal.SIGINT)
       case _:
         # yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0"
