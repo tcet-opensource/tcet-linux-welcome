@@ -79,7 +79,7 @@ class MyApp(Gtk.Window):
     result = os.popen('echo $XDG_CURRENT_DESKTOP').read().strip()
     match result:
       case "GNOME":
-        p = subprocess.Popen(["kgx", "--", "bash", "-c", installCMD], preexec_fn=os.setpgrp)
+        p = subprocess.Popen(["gnome-terminal", "--", installCMD], preexec_fn=os.setpgrp)
         process = multiprocessing.Process(target = p)
         if not process.is_alive:
           os.killpg(p.pid, signal.SIGINT)
