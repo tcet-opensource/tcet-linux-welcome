@@ -73,13 +73,13 @@ class MyApp(Gtk.Window):
 
   def on_install_clicked(self, widget):
     to_install = [v for k,v in package_map.items() if self.checkboxes[k].get_active()]
-    installCMD = "yay -S --noconfirm"
+    installCMD = "pkexec yay -S --noconfirm"
     for package in to_install:
       installCMD = installCMD + " " + package
     result = os.popen('echo $XDG_CURRENT_DESKTOP').read().strip()
     match result:
       case "GNOME":
-        p = subprocess.Popen(["gnome-terminal", "--", installCMD], preexec_fn=os.setpgrp)
+        p = subprocess.Popen(["gnome-terminal", "--","bash", "-c", installCMD], preexec_fn=os.setpgrp)
         process = multiprocessing.Process(target = p)
         if not process.is_alive:
           os.killpg(p.pid, signal.SIGINT)
