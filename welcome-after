@@ -2,6 +2,13 @@
 
 DIR=/usr/local/share/tcet-welcome
 
+TERM=""
+
+case $XDG_CURRENT_DESKTOP in "GNOME") TERM=kgx;;
+"XFCE") TERM=xfce4-terminal;;
+*) yad --image="dialog-question" --title "Alert" --text "Can't recongnize desktop environment" --button="yad-ok:0";;
+esac
+
 yad --title "Welcome" \
     --form \
     --window-icon=$DIR/assets/tcetlinux-logo.png \
@@ -9,14 +16,15 @@ yad --title "Welcome" \
     --rows=5 \
     --width=640 \
     --height=380 \
+    --fixed \
     --no-escape \
     --image=$DIR/assets/Tcet_Linux.png \
     --field="<b>Update PC</b>":fbtn "bash -c '$DIR/scripts/update.sh'" \
-    --field="<b>Fix Screen Resolution</b>":fbtn "bash -c 'xfce4-display-settings'" \
+    --field="<b>Fix Screen Resolution</b>":fbtn "bash -c '$DIR/scripts/resolution.sh'" \
     --field="<b>Arch User Repository (AUR)</b>":fbtn "bash -c '$DIR/scripts/aur.sh'" \
     --field="<b>Join our discord Server</b>":fbtn "bash -c '$DIR/scripts/discord.sh'" \
-    --field="<b>Toggle Autostart</b>":fbtn " xfce4-terminal -x '$DIR/scripts/autostart.sh'"\
-    --field="<b>Update Mirrors</b>":fbtn "xfce4-terminal -x '$DIR/scripts/mirror.sh'" \
+    --field="<b>Toggle Autostart</b>":fbtn "$TERM -e '$DIR/scripts/autostart.sh'"\
+    --field="<b>Update Mirrors</b>":fbtn "$TERM -e '$DIR/scripts/mirror.sh'" \
     --field="<b>Application Installer (BETA)</b>":fbtn "bash -c  '$DIR/scripts/py-installer.sh'" \
     --field="<b>Arch Wiki</b>":fbtn "bash -c '$DIR/scripts/archwiki.sh'" \
     --field="<b>Contribute to TCET Linux</b>":fbtn "bash -c  '$DIR/scripts/github.sh'" \
