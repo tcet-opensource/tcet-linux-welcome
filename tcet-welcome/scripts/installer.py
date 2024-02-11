@@ -14,9 +14,9 @@ package_map = {
   "VS Code": "visual-studio-code-bin",
   "PyCharm (CE)":"pycharm-community-edition",
   "Libre Office": "libreoffice-still",
-  "Java": "jdk17-openjdk",
+  "Java 17": "jdk17-openjdk",
   "GitHub CLI":"github-cli",
-  "Neovim":"neovim",
+  "Rust":"rust",
   "Intellij Idea (CE)":"intellij-idea-community-edition",
   "GoLang":"go"
 }
